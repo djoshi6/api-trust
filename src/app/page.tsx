@@ -2,8 +2,8 @@
 import TrustCard from "@/components/TrustCard";
 import SearchBar from "@/components/SearchBar";
 import Testimonials from "@/components/Testimonials";
-import { SurveyCta } from "@/components/SurveyCta";
 import { WaitlistForm } from "@/components/WaitlistForm";
+import { Pricing } from "@/components/Pricing";
 import { Faq } from "@/components/Faq";
 
 export default async function Page() {
@@ -73,6 +73,9 @@ export default async function Page() {
         <section className="mt-16">
           <Testimonials />
         </section>
+
+        {/* Pricing */}
+        <Pricing />
 
         {/* Email capture (anchor for the button above) */}
         <section id="beta" className="scroll-mt-24">
