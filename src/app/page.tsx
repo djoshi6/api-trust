@@ -18,19 +18,18 @@ type CardData = {
 };
 
 async function getCardData(): Promise<CardData> {
-  const h = headers();
-  const host = h.get("host") ?? "localhost:3000";
-  const proto = process.env.VERCEL ? "https" : "http";
+  const h = await headers();                      // ✅ await it
+  const host =
+    h.get("x-forwarded-host") ??                  // vercel / proxies
+    h.get("host") ??
+    "localhost:3000";
+
+  const proto = h.get("x-forwarded-proto") ?? (process.env.VERCEL ? "https" : "http");
   const url = `${proto}://${host}/api/snapshot`;
 
-  try {
-    const res = await fetch(url, { cache: "no-store" });
-    if (!res.ok) throw new Error("snapshot not ready");
-    return (await res.json()) as CardData;
-  } catch {
-    const mod = await import("../data/snapshot.json");
-    return mod.default as CardData;
-  }
+  const res = await fetch(url, { next: { revalidate: 60 } });
+  if (!res.ok) throw new Error(`snapshot fetch failed: ${res.status}`);
+  return (await res.json()) as CardData;
 }
 
 export default async function Page() {
