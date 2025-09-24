@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
+}
+
+model Api {
+  id          String        @id @default(cuid())
+  name        String        @unique
+  provider    String?
+  category    String?
+  baseUrl     String
+  regions     String[]
+  createdAt   DateTime      @default(now())
+  probes      Probe[]
+  rollups     DailyRollup[]
+  trustScores TrustScore[]
+}
+
+model Probe {
+  id        String   @id @default(cuid())
+  apiId     String
+  region    String
+  ts        DateTime @default(now())
+  status    Int
+  latencyMs Int
+  errorType String?
+  Api       Api      @relation(fields: [apiId], references: [id])
+
+  @@index([apiId, ts])
+  @@index([apiId, region, ts])
+}
+
+model DailyRollup {
+  id        String   @id @default(cuid())
+  apiId     String
+  region    String
+  day       DateTime
+  uptimePct Float
+  p95Ms     Int
+  errorRate Float
+  incidentH Float    @default(0)
+  Api       Api      @relation(fields: [apiId], references: [id])
+
+  @@unique([apiId, region, day])
+  @@index([apiId, day])
+}
+
+model TrustScore {
+  id      String   @id @default(cuid())
+  apiId   String
+  region  String
+  day     DateTime
+  score   Int
+  base    Float
+  penalty Float
+  Api     Api      @relation(fields: [apiId], references: [id])
+
+  @@unique([apiId, region, day])
+}

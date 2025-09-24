@@ -1,0 +1,26 @@
+[
+    {
+      "slug": "github",
+      "name": "GitHub REST",
+      "method": "GET",
+      "url": "https://api.github.com/",
+      "headers": { "User-Agent": "api-trust-monitor" },
+      "cost_per_req": 0
+    },
+    {
+      "slug": "cloudflare-ips",
+      "name": "Cloudflare IPs",
+      "method": "GET",
+      "url": "https://api.cloudflare.com/client/v4/ips",
+      "cost_per_req": 0
+    },
+    {
+      "slug": "openai-models",
+      "name": "OpenAI Models",
+      "method": "GET",
+      "url": "https://api.openai.com/v1/models",
+      "auth": "bearer",
+      "env": "OPENAI_API_KEY",
+      "cost_per_req": 0
+    }
+  ]  

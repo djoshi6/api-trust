@@ -1,0 +1,143 @@
+[
+    {
+      "slug": "openai-models",
+      "label": "OpenAI: list models",
+      "method": "GET",
+      "url": "https://api.openai.com/v1/models",
+      "timeout_ms": 8000,
+      "headers": { "Authorization": "Bearer $OPENAI_API_KEY" },
+      "cost_per_req": 0.00
+    },
+    {
+      "slug": "anthropic-models",
+      "label": "Anthropic: list models",
+      "method": "GET",
+      "url": "https://api.anthropic.com/v1/models",
+      "timeout_ms": 8000,
+      "headers": {
+        "x-api-key": "$ANTHROPIC_API_KEY",
+        "anthropic-version": "2023-06-01"
+      },
+      "cost_per_req": 0.00
+    },
+    {
+      "slug": "github-rate-limit",
+      "label": "GitHub: rate limit",
+      "method": "GET",
+      "url": "https://api.github.com/rate_limit",
+      "timeout_ms": 8000,
+      "headers": {
+        "Authorization": "Bearer $GITHUB_TOKEN",
+        "User-Agent": "api-trust"
+      },
+      "cost_per_req": 0.00
+    },
+    {
+      "slug": "gitlab-version",
+      "label": "GitLab: version",
+      "method": "GET",
+      "url": "https://gitlab.com/api/v4/version",
+      "timeout_ms": 8000,
+      "headers": {},
+      "cost_per_req": 0.00
+    },
+    {
+      "slug": "stripe-charges",
+      "label": "Stripe: list charges (limit=1)",
+      "method": "GET",
+      "url": "https://api.stripe.com/v1/charges?limit=1",
+      "timeout_ms": 8000,
+      "headers": { "Authorization": "Bearer $STRIPE_API_KEY" },
+      "cost_per_req": 0.00
+    },
+    {
+      "slug": "twilio-accounts",
+      "label": "Twilio: accounts",
+      "method": "GET",
+      "url": "https://api.twilio.com/2010-04-01/Accounts.json",
+      "timeout_ms": 8000,
+      "headers": { "Authorization": "Basic $TWILIO_BASIC" },
+      "cost_per_req": 0.00
+    },
+    {
+      "slug": "sendgrid-credits",
+      "label": "SendGrid: user credits",
+      "method": "GET",
+      "url": "https://api.sendgrid.com/v3/user/credits",
+      "timeout_ms": 8000,
+      "headers": { "Authorization": "Bearer $SENDGRID_API_KEY" },
+      "cost_per_req": 0.00
+    },
+    {
+      "slug": "postmark-servers",
+      "label": "Postmark: servers",
+      "method": "GET",
+      "url": "https://api.postmarkapp.com/servers",
+      "timeout_ms": 8000,
+      "headers": { "X-Postmark-Account-Token": "$POSTMARK_ACCOUNT_TOKEN" },
+      "cost_per_req": 0.00
+    },
+    {
+      "slug": "mailgun-domains",
+      "label": "Mailgun: domains",
+      "method": "GET",
+      "url": "https://api.mailgun.net/v3/domains",
+      "timeout_ms": 8000,
+      "headers": { "Authorization": "Basic $MAILGUN_BASIC" },
+      "cost_per_req": 0.00
+    },
+    {
+      "slug": "auth0-tenant-settings",
+      "label": "Auth0: tenant settings",
+      "method": "GET",
+      "url": "https://$AUTH0_DOMAIN/api/v2/tenants/settings",
+      "timeout_ms": 8000,
+      "headers": { "Authorization": "Bearer $AUTH0_MGMT_TOKEN" },
+      "cost_per_req": 0.00
+    },
+    {
+      "slug": "clerk-clients",
+      "label": "Clerk: clients (limit=1)",
+      "method": "GET",
+      "url": "https://api.clerk.com/v1/clients?limit=1",
+      "timeout_ms": 8000,
+      "headers": { "Authorization": "Bearer $CLERK_API_KEY" },
+      "cost_per_req": 0.00
+    },
+    {
+      "slug": "cloudflare-user",
+      "label": "Cloudflare: user",
+      "method": "GET",
+      "url": "https://api.cloudflare.com/client/v4/user",
+      "timeout_ms": 8000,
+      "headers": { "Authorization": "Bearer $CLOUDFLARE_API_TOKEN" },
+      "cost_per_req": 0.00
+    },
+    {
+      "slug": "google-apis-directory",
+      "label": "Google: APIs directory",
+      "method": "GET",
+      "url": "https://www.googleapis.com/discovery/v1/apis",
+      "timeout_ms": 8000,
+      "headers": {},
+      "cost_per_req": 0.00
+    },
+    {
+      "slug": "ipify",
+      "label": "ipify: public IP",
+      "method": "GET",
+      "url": "https://api.ipify.org?format=json",
+      "timeout_ms": 8000,
+      "headers": {},
+      "cost_per_req": 0.00
+    },
+    {
+      "slug": "coindesk-btc",
+      "label": "CoinDesk: BTC price",
+      "method": "GET",
+      "url": "https://api.coindesk.com/v1/bpi/currentprice.json",
+      "timeout_ms": 8000,
+      "headers": {},
+      "cost_per_req": 0.00
+    }
+  ]  
